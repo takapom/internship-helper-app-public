@@ -1,9 +1,9 @@
-// components/GlassCard.tsx
+// components/GlassCard2.tsx
 "use client"
 import styles from './GlassCard.module.css';
 import { db } from "../../src/lib/firebase"
-import {doc, deleteDoc, updateDoc } from 'firebase/firestore';
-import Router, { useRouter } from 'next/navigation';
+import {doc, deleteDoc} from 'firebase/firestore';
+import { useRouter } from 'next/navigation';
 
 
 type Props = {
