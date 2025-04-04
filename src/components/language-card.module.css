@@ -1,0 +1,148 @@
+.card {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  }
+  
+  .cardHeader {
+    border-bottom: 1px solid #334155;
+    padding: 1.5rem;
+  }
+  
+  .titleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin: 0;
+  }
+  
+  .badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    color: white;
+  }
+  
+  .badgeEasy {
+    background-color: #10b981;
+  }
+  
+  .badgeMedium {
+    background-color: #f59e0b;
+  }
+  
+  .badgeHard {
+    background-color: #ef4444;
+  }
+  
+  .description {
+    color: #94a3b8;
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .features {
+    margin-bottom: 1rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #cbd5e1;
+  }
+  
+  .featureList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .featureItem {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #94a3b8;
+  }
+  
+  .featureItem::before {
+    content: "•";
+    position: absolute;
+    left: 0.5rem;
+    color: #38bdf8;
+  }
+  
+  .codeContainer {
+    background-color: #0f172a;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  
+  .codeHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #1e293b;
+    color: #94a3b8;
+    font-size: 0.875rem;
+  }
+  
+  .code {
+    padding: 1rem;
+    margin: 0;
+    overflow-x: auto;
+    font-family: "Fira Code", monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #e2e8f0;
+  }
+  
+  .footer {
+    border-top: 1px solid #334155;
+    padding: 1.5rem;
+  }
+  
+  .useCases {
+    width: 100%;
+  }
+  
+  /* レスポンシブデザイン */
+  @media (max-width: 768px) {
+    .title {
+      font-size: 1.25rem;
+    }
+  
+    .code {
+      font-size: 0.75rem;
+    }
+  }
+  
+  

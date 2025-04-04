@@ -1,0 +1,97 @@
+/* components/GlassCard.module.css */
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      color: rgb(24, 31, 171);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease;
+      width: 30%;
+      margin-bottom: 30px;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
+  .title_text{
+    color: blue;
+  }
+  
+  .edit_button{
+    background-color: #471fcac9; /* 赤っぽい削除ボタン */
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px; /* 少し大きめに */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 10px;
+  }
+  
+  .card_button {
+    background-color: #471fcac9; /* 赤っぽい削除ボタン */
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px; /* 少し大きめに */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card_button:hover {
+    background-color: #d9363e; /* ホバー時に少し濃く */
+  }
+  
+  @media (max-width: 600px){
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      color: rgb(24, 31, 171);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease;
+      width: 70%;
+      margin-bottom: 30px;
+      }
+  
+      .edit_button{
+        background-color: #471fcac9; /* 赤っぽい削除ボタン */
+        color: white;
+        padding: 6px 15px;
+        font-size: 16px; /* 少し大きめに */
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-left: 10px;
+      }
+  
+      .card_button {
+        background-color: #471fcac9; /* 赤っぽい削除ボタン */
+        color: white;
+        padding: 6px 15px;
+        font-size: 16px; /* 少し大きめに */
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+  
+    }
+  
+    
