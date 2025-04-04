@@ -1,8 +1,19 @@
 import { LanguageCard } from "./language-card"
 import styles from "./languages-grid.module.css"
 
+type Difficulty = "easy" | "medium" | "hard"
+
+type MobileLanguage = {
+  name: string
+  description: string
+  features: string[]
+  codeExample: string
+  useCases: string
+  difficulty: Difficulty
+}
+
 export function MobileLanguages() {
-  const mobileLanguages = [
+  const mobileLanguages: MobileLanguage[] = [
     {
       name: "Swift",
       description:
@@ -83,7 +94,7 @@ class ViewController: UIViewController {
     }
 }`,
       useCases: "iOSアプリ開発、macOSアプリ開発、watchOSアプリ開発、tvOSアプリ開発",
-      difficulty: "medium",
+      difficulty: "medium" as const,
     },
     {
       name: "Flutter",
@@ -162,7 +173,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }`,
       useCases: "クロスプラットフォームモバイルアプリ、プログレッシブウェブアプリ、デスクトップアプリ",
-      difficulty: "medium",
+      difficulty: "medium" as const,
     },
     {
       name: "Kotlin",
@@ -213,7 +224,7 @@ class MainActivity : AppCompatActivity() {
     }
 }`,
       useCases: "Androidアプリ開発、サーバーサイド開発、マルチプラットフォームアプリ開発",
-      difficulty: "medium",
+      difficulty: "medium" as const,
     },
   ]
 
