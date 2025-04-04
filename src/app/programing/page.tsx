@@ -15,7 +15,7 @@ export default function Home() {
       <Navbar />
     <div className={styles.container}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Developer's Guide</h1>
+        <h1 className={styles.title}>Developers Guide</h1>
         <p className={styles.subtitle}>プログラミング言語とツールの総合ガイド</p>
       </header>
 
@@ -68,7 +68,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        <p>&copy; {new Date().getFullYear()} Developer's Guide - All Rights Reserved</p>
+        <p>&copy; {new Date().getFullYear()} Developers Guide - All Rights Reserved</p>
       </footer>
     </div>
     </div>
