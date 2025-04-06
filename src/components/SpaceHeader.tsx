@@ -51,7 +51,7 @@ export default function SpaceHeader() {
 
       <div className={styles.contentContainer}>
         <div className={styles.textContainer}>
-          <h1 className={styles.title}>エンジニア志望の学生へ、就活やインターンの情報管理アプリケーション</h1>
+          <h1 className={styles.title}>エンジニア向けアプリ</h1>
           <p className={styles.subtitle}>Shumailは就活やインターンの情報を即座に得ることができる<br />アプリケーションです。<br />
           例えばGmailからのメールを要約します。<br />
           実際に下記からメールを取得してみましょう。

@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import GlassCard from "@/components/GlassCard"
 import styles from "./page.module.css"
 import SpaceHeader from "@/components/SpaceHeader";
+import SimpleRadarChart from "@/components/SimpleRadarChart";
 
 type Todo = {
   id: string;
@@ -72,6 +73,7 @@ export default function TodosPage() {
     <div>
         <Navbar />
         <SpaceHeader />
+        <SimpleRadarChart />
       <div>
         <h1 className={styles.list_text}>インターン一覧</h1>
       <div className={styles.input_container}>
@@ -127,7 +129,7 @@ export default function TodosPage() {
       </div>
 
       {/* 一覧表示 */}
-      <ul>
+      <div>
         {todos.map((todo) => (
         <GlassCard
         id={todo.id}
@@ -141,7 +143,7 @@ export default function TodosPage() {
         onDelete={fetchTodos} 
         />
         ))}
-      </ul>
+        </div>
     </div>
   );
 }
