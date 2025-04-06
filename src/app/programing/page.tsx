@@ -45,14 +45,14 @@ export default function Home() {
           <div className={styles.tabContent}>
             {activeTab === "web" && (
               <div className={styles.tabPanel}>
-                <h2 className={styles.sectionTitle}>Web開発言語</h2>
+                <h2 className={styles.sectionTitle}>Web開発の主要言語</h2>
                 <WebLanguages />
               </div>
             )}
 
             {activeTab === "mobile" && (
               <div className={styles.tabPanel}>
-                <h2 className={styles.sectionTitle}>モバイル開発言語</h2>
+                <h2 className={styles.sectionTitle}>モバイル開発の主要言語</h2>
                 <MobileLanguages />
               </div>
             )}
