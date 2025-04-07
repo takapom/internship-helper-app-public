@@ -1,4 +1,4 @@
-import Analysis from "@/components/Analysis"
+// import Analysis from "@/components/Analysis"
 import Navbar from "@/components/Navbar"
 import SimpleRadarChart from "@/components/SimpleRadarChart"
 import styles from "./page.module.css"
@@ -8,7 +8,7 @@ export default function ProfileListPage() {
         <div>
             <Navbar />
             <h1 className={styles.profile_text}>プロフィール一覧</h1>
-            <Analysis />
+            {/* <Analysis /> */}
             <SimpleRadarChart />
         </div>
     )
