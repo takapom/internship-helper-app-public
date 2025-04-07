@@ -73,7 +73,7 @@ export default function TodosPage() {
     <div>
         <Navbar />
         <SpaceHeader />
-        <SimpleRadarChart />
+        {/* <SimpleRadarChart /> */}
       <div>
         <h1 className={styles.list_text}>インターン一覧</h1>
       <div className={styles.input_container}>

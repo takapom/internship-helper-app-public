@@ -73,15 +73,17 @@ export default function Navbar() {
                 </Link>
             )}
             </li>
-            {/* <li className={styles.navItem}>
-              <Link href="#" className={styles.navLink}>
-                Company List
-              </Link>
-            </li> */}
             <li className={styles.navItem}>
               {user && (
                 <Link href={`/user/${user.uid}/companyList`} className={styles.navLink}>
                   Company List
+                </Link>
+              )}
+            </li>
+            <li className={styles.navItem}>
+              {user && (
+                <Link href={`/user/${user.uid}/profileList`} className={styles.navLink}>
+                  Profile List
                 </Link>
               )}
             </li>
