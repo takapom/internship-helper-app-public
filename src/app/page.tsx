@@ -18,9 +18,16 @@ export default function HomePage() {
     await setPersistence(auth, browserLocalPersistence); // 👈 追加する
     try {
       const provider = new GoogleAuthProvider()
+      provider.addScope("https://www.googleapis.com/auth/gmail.readonly")
       const result = await signInWithPopup(auth, provider)
       const user = result.user
 
+      const credential = GoogleAuthProvider.credentialFromResult(result)
+      const token = credential?.accessToken
+
+      if (token) {
+        localStorage.setItem("gmailAccessToken", token) // 🔴 保存！
+      }
       // Firestore にユーザー情報保存（初回のみ）
       const userRef = doc(db, "users", user.uid)
       const snapshot = await getDoc(userRef)

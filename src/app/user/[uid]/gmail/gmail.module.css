@@ -1,0 +1,252 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .title {
+    display: flex;
+    align-items: center;
+    font-size: 1.75rem;
+    color: #1a73e8;
+    margin: 0;
+  }
+  
+  .mailIcon {
+    margin-right: 0.75rem;
+  }
+  
+  .searchContainer {
+    position: relative;
+    width: 300px;
+  }
+  
+  .searchIcon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #5f6368;
+    width: 18px;
+    height: 18px;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    border-radius: 24px;
+    border: 1px solid #dadce0;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.2s;
+  }
+  
+  .searchInput:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+  }
+  
+  .tableContainer {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  
+  .emailTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .emailTable th {
+    background-color: #f8f9fa;
+    text-align: left;
+    padding: 16px;
+    font-weight: 500;
+    color: #5f6368;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .subjectHeader {
+    width: 30%;
+  }
+  
+  .previewHeader {
+    width: 70%;
+  }
+  
+  .emailRow {
+    transition: background-color 0.15s;
+    cursor: pointer;
+  }
+  
+  .emailRow:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .emailRow td {
+    padding: 16px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .subject {
+    font-weight: 500;
+    color: #202124;
+  }
+  
+  .preview {
+    color: #5f6368;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+  
+  .loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 0;
+    color: #5f6368;
+  }
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(26, 115, 232, 0.2);
+    border-top-color: #1a73e8;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .noEmails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 0;
+    color: #5f6368;
+    text-align: center;
+  }
+  
+  .noEmailsIcon {
+    color: #dadce0;
+    margin-bottom: 1rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 1.5rem 0;
+    }
+  
+    .title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .searchContainer {
+      width: 100%;
+    }
+  
+    .emailTable {
+      display: block;
+    }
+  
+    .emailTable thead {
+      display: none; /* Hide table headers on mobile */
+    }
+  
+    .emailTable tbody,
+    .emailTable tr {
+      display: block;
+      width: 100%;
+    }
+  
+    .emailTable tr {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+  
+    .emailTable td {
+      display: block;
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: none;
+    }
+  
+    /* Add a label for subject on mobile */
+    .emailTable td.subject::before {
+      content: "件名: ";
+      font-weight: 400;
+      color: #5f6368;
+    }
+  
+    /* Remove padding between cells of same row */
+    .emailTable td.preview {
+      padding-top: 0;
+    }
+  
+    .subject {
+      font-size: 1rem;
+      padding-bottom: 4px !important;
+    }
+  
+    .preview {
+      font-size: 0.85rem;
+    }
+  }
+  
+  /* Small phones */
+  @media (max-width: 480px) {
+    .container {
+      padding: 0 0.75rem;
+    }
+  
+    .title {
+      font-size: 1.25rem;
+    }
+  
+    .tableContainer {
+      border-radius: 6px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+  
+    .emailTable td {
+      padding: 10px 12px;
+    }
+  
+    .subject {
+      font-size: 1.1rem;
+    }
+  
+    .preview {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+  
+    .spinner {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  

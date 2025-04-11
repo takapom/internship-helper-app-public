@@ -10,7 +10,7 @@ export default function ProfileListPage() {
             <Navbar />
             <h1 className={styles.profile_text}>プロフィール一覧</h1>
             <Analysis />
-            <StudyTime />
+            {/* <StudyTime /> */}
             {/* <SimpleRadarChart /> */}
         </div>
     )

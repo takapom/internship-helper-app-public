@@ -3,189 +3,102 @@
 import { useState } from "react"
 import styles from "./analysis.module.css"
 
-export default function Analysis() {
-  const [activeTab, setActiveTab] = useState("values")
-  const [values, setValues] = useState("")
-  const [strengths, setStrengths] = useState("")
-  const [weaknesses, setWeaknesses] = useState("")
-  const [successes, setSuccesses] = useState("")
-  const [failures, setFailures] = useState("")
-  const [interests, setInterests] = useState("")
-  const [aspirations, setAspirations] = useState("")
+interface AnalysisEntry {
+  id: string
+  period: string
+  stage?: string
+  summary: string
+  content: string
+}
 
-  const handleTabClick = (tab: string) => {
-    setActiveTab(tab)
+export default function SelfAnalysis() {
+  const [entries, setEntries] = useState<AnalysisEntry[]>([])
+
+  const [newEntry, setNewEntry] = useState<Omit<AnalysisEntry, "id">>({
+    period: "",
+    stage: "",
+    summary: "",
+    content: "",
+  })
+
+  const handleAddEntry = () => {
+    if (newEntry.period && newEntry.summary && newEntry.content) {
+      const id = `entry-${Date.now()}`
+      setEntries([...entries, { ...newEntry, id }])
+      setNewEntry({ period: "", stage: "", summary: "", content: "" })
+    }
   }
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>自己分析</h1>
 
-      <div className={styles.tabsContainer}>
-        <div className={styles.tabsList}>
-          <button
-            className={`${styles.tabButton} ${activeTab === "values" ? styles.activeTab : ""}`}
-            onClick={() => handleTabClick("values")}
-          >
-            価値観
-          </button>
-          <button
-            className={`${styles.tabButton} ${activeTab === "strengths" ? styles.activeTab : ""}`}
-            onClick={() => handleTabClick("strengths")}
-          >
-            強み
-          </button>
-          <button
-            className={`${styles.tabButton} ${activeTab === "weaknesses" ? styles.activeTab : ""}`}
-            onClick={() => handleTabClick("weaknesses")}
-          >
-            弱み
-          </button>
-          <button
-            className={`${styles.tabButton} ${activeTab === "successes" ? styles.activeTab : ""}`}
-            onClick={() => handleTabClick("successes")}
-          >
-            成功体験
-          </button>
-          <button
-            className={`${styles.tabButton} ${activeTab === "failures" ? styles.activeTab : ""}`}
-            onClick={() => handleTabClick("failures")}
-          >
-            失敗体験
-          </button>
-          <button
-            className={`${styles.tabButton} ${activeTab === "interests" ? styles.activeTab : ""}`}
-            onClick={() => handleTabClick("interests")}
-          >
-            興味関心
-          </button>
-          <button
-            className={`${styles.tabButton} ${activeTab === "aspirations" ? styles.activeTab : ""}`}
-            onClick={() => handleTabClick("aspirations")}
-          >
-            将来像
-          </button>
+      <div className={styles.tableContainer}>
+        <div className={styles.table}>
+          <div className={styles.headerRow}>
+            <div className={styles.headerCell}>いつ</div>
+            <div className={styles.headerCell}>概要</div>
+            <div className={styles.headerCell}>内容</div>
+          </div>
+
+          {entries.map((entry) => (
+            <div key={entry.id} className={styles.row}>
+              <div className={styles.periodCell}>{entry.period}</div>
+              <div className={styles.summaryCell}>{entry.summary}</div>
+              <div className={styles.contentCell}>{entry.content}</div>
+            </div>
+          ))}
         </div>
+      </div>
 
-        <div className={styles.tabContent}>
-          {activeTab === "values" && (
-            <div className={styles.card}>
-              <div className={styles.cardHeader}>
-                <h2 className={styles.cardTitle}>価値観</h2>
-                <p className={styles.cardDescription}>あなたが大切にしている価値観や信念について書いてください。</p>
-              </div>
-              <div className={styles.cardContent}>
-                <textarea
-                  placeholder="あなたの価値観を入力してください..."
-                  className={styles.textarea}
-                  value={values}
-                  onChange={(e) => setValues(e.target.value)}
-                />
-              </div>
-            </div>
-          )}
+      <div className={styles.formSection}>
+        <h2 className={styles.formTitle}>新しいエントリーを追加</h2>
+        <div className={styles.form}>
+          <div className={styles.formGroup}>
+            <label htmlFor="period" className={styles.label}>
+              時期:
+            </label>
+            <input
+              type="text"
+              id="period"
+              className={styles.input}
+              value={newEntry.period}
+              onChange={(e) => setNewEntry({ ...newEntry, period: e.target.value })}
+              placeholder="例: 高校③"
+            />
+          </div>
 
-          {activeTab === "strengths" && (
-            <div className={styles.card}>
-              <div className={styles.cardHeader}>
-                <h2 className={styles.cardTitle}>強み</h2>
-                <p className={styles.cardDescription}>あなたの強みや得意なことについて書いてください。</p>
-              </div>
-              <div className={styles.cardContent}>
-                <textarea
-                  placeholder="あなたの強みを入力してください..."
-                  className={styles.textarea}
-                  value={strengths}
-                  onChange={(e) => setStrengths(e.target.value)}
-                />
-              </div>
-            </div>
-          )}
+          <div className={styles.formGroup}>
+            <label htmlFor="summary" className={styles.label}>
+              概要:
+            </label>
+            <input
+              type="text"
+              id="summary"
+              className={styles.input}
+              value={newEntry.summary}
+              onChange={(e) => setNewEntry({ ...newEntry, summary: e.target.value })}
+              placeholder="例: リーダーシップの発揮"
+            />
+          </div>
 
-          {activeTab === "weaknesses" && (
-            <div className={styles.card}>
-              <div className={styles.cardHeader}>
-                <h2 className={styles.cardTitle}>弱み</h2>
-                <p className={styles.cardDescription}>あなたの弱みや課題について書いてください。</p>
-              </div>
-              <div className={styles.cardContent}>
-                <textarea
-                  placeholder="あなたの弱みを入力してください..."
-                  className={styles.textarea}
-                  value={weaknesses}
-                  onChange={(e) => setWeaknesses(e.target.value)}
-                />
-              </div>
-            </div>
-          )}
+          <div className={styles.formGroup}>
+            <label htmlFor="content" className={styles.label}>
+              内容:
+            </label>
+            <textarea
+              id="content"
+              className={styles.textarea}
+              value={newEntry.content}
+              onChange={(e) => setNewEntry({ ...newEntry, content: e.target.value })}
+              placeholder="詳細な内容を入力してください"
+              rows={4}
+            />
+          </div>
 
-          {activeTab === "successes" && (
-            <div className={styles.card}>
-              <div className={styles.cardHeader}>
-                <h2 className={styles.cardTitle}>成功体験</h2>
-                <p className={styles.cardDescription}>あなたの成功体験について書いてください。</p>
-              </div>
-              <div className={styles.cardContent}>
-                <textarea
-                  placeholder="あなたの成功体験を入力してください..."
-                  className={styles.textarea}
-                  value={successes}
-                  onChange={(e) => setSuccesses(e.target.value)}
-                />
-              </div>
-            </div>
-          )}
-
-          {activeTab === "failures" && (
-            <div className={styles.card}>
-              <div className={styles.cardHeader}>
-                <h2 className={styles.cardTitle}>失敗体験</h2>
-                <p className={styles.cardDescription}>あなたの失敗体験と、そこから学んだことについて書いてください。</p>
-              </div>
-              <div className={styles.cardContent}>
-                <textarea
-                  placeholder="あなたの失敗体験を入力してください..."
-                  className={styles.textarea}
-                  value={failures}
-                  onChange={(e) => setFailures(e.target.value)}
-                />
-              </div>
-            </div>
-          )}
-
-          {activeTab === "interests" && (
-            <div className={styles.card}>
-              <div className={styles.cardHeader}>
-                <h2 className={styles.cardTitle}>興味関心</h2>
-                <p className={styles.cardDescription}>あなたの興味や関心のあることについて書いてください。</p>
-              </div>
-              <div className={styles.cardContent}>
-                <textarea
-                  placeholder="あなたの興味関心を入力してください..."
-                  className={styles.textarea}
-                  value={interests}
-                  onChange={(e) => setInterests(e.target.value)}
-                />
-              </div>
-            </div>
-          )}
-
-          {activeTab === "aspirations" && (
-            <div className={styles.card}>
-              <div className={styles.cardHeader}>
-                <h2 className={styles.cardTitle}>将来像</h2>
-                <p className={styles.cardDescription}>将来どのようなエンジニアになりたいかについて書いてください。</p>
-              </div>
-              <div className={styles.cardContent}>
-                <textarea
-                  placeholder="あなたの将来像を入力してください..."
-                  className={styles.textarea}
-                  value={aspirations}
-                  onChange={(e) => setAspirations(e.target.value)}
-                />
-              </div>
-            </div>
-          )}
+          <button className={styles.button} onClick={handleAddEntry}>
+            追加する
+          </button>
         </div>
       </div>
     </div>

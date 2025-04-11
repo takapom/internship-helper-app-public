@@ -1,4 +1,3 @@
-// components/SimpleRadarChart.tsx
 'use client';
 
 import { Radar } from 'react-chartjs-2';

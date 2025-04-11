@@ -75,6 +75,13 @@ export default function Navbar() {
             </li>
             <li className={styles.navItem}>
               {user && (
+                <Link href={`/user/${user.uid}/gmail`} className={styles.navLink}>
+                  Get Gmail
+                </Link>
+              )}
+            </li>
+            <li className={styles.navItem}>
+              {user && (
                 <Link href={`/user/${user.uid}/companyList`} className={styles.navLink}>
                   Company List
                 </Link>
