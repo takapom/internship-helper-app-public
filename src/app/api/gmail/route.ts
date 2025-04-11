@@ -1,63 +1,24 @@
-// // app/api/gmail/route.ts
-// import { NextRequest, NextResponse } from "next/server"
-
-// export async function POST(req: NextRequest) {
-//   const { accessToken } = await req.json()
-
-//   // 1. メールID一覧を取得
-//   const listRes = await fetch("https://gmail.googleapis.com/gmail/v1/users/me/messages?maxResults=5", {
-//     headers: {
-//       Authorization: `Bearer ${accessToken}`,
-//     },
-//   })
-
-//   const listData = await listRes.json()
-//   const messages = listData.messages || []
-
-//   const detailedMessages = await Promise.all(
-//     messages.map(async (msg: any) => {
-//       const msgRes = await fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages/${msg.id}?format=full`, {
-//         headers: {
-//           Authorization: `Bearer ${accessToken}`,
-//         },
-//       })
-//       const msgData = await msgRes.json()
-
-//       // 件名の取得
-//       const headers = msgData.payload.headers
-//       const subjectHeader = headers.find((h: any) => h.name === "Subject")
-//       const subject = subjectHeader ? subjectHeader.value : "（件名なし）"
-
-//       // 本文の取得（プレーンテキスト or HTMLのbase64データ）
-//       let body = ""
-//       if (msgData.payload.parts) {
-//         const part = msgData.payload.parts.find((p: any) => p.mimeType === "text/plain")
-//         if (part?.body?.data) {
-//           body = Buffer.from(part.body.data, "base64").toString("utf-8")
-//         }
-//       } else if (msgData.payload.body?.data) {
-//         body = Buffer.from(msgData.payload.body.data, "base64").toString("utf-8")
-//       }
-
-//       return {
-//         id: msg.id,
-//         subject,
-//         body,
-//       }
-//     })
-//   )
-
-//   return NextResponse.json(detailedMessages)
-// }
-
-
-// app/api/gmail/route.ts
 import { NextRequest, NextResponse } from "next/server"
+
+type GmailMessage = {
+  id: string
+}
+
+type GmailHeader = {
+  name: string
+  value: string
+}
+
+type GmailPart = {
+  mimeType: string
+  body?: {
+    data?: string
+  }
+}
 
 export async function POST(req: NextRequest) {
   const { accessToken } = await req.json()
 
-  // 1. メールID一覧を取得
   const listRes = await fetch(
     "https://gmail.googleapis.com/gmail/v1/users/me/messages?maxResults=10&q=is:inbox",
     {
@@ -68,9 +29,9 @@ export async function POST(req: NextRequest) {
   )
 
   const listData = await listRes.json()
-  console.log("🔍 Gmail list response:", JSON.stringify(listData, null, 2)) // ← ここで中身確認
+  console.log("🔍 Gmail list response:", JSON.stringify(listData, null, 2))
 
-  const messages = listData.messages || []
+  const messages: GmailMessage[] = listData.messages || []
 
   if (messages.length === 0) {
     console.log("⚠️ メッセージが見つかりません")
@@ -78,7 +39,7 @@ export async function POST(req: NextRequest) {
   }
 
   const detailedMessages = await Promise.all(
-    messages.map(async (msg: any) => {
+    messages.map(async (msg) => {
       const msgRes = await fetch(
         `https://gmail.googleapis.com/gmail/v1/users/me/messages/${msg.id}?format=full`,
         {
@@ -90,14 +51,15 @@ export async function POST(req: NextRequest) {
       const msgData = await msgRes.json()
 
       // 件名の取得
-      const headers = msgData.payload.headers
-      const subjectHeader = headers.find((h: any) => h.name === "Subject")
+      const headers = msgData.payload.headers as GmailHeader[]
+      const subjectHeader = headers.find((h) => h.name === "Subject")
       const subject = subjectHeader ? subjectHeader.value : "（件名なし）"
 
       // 本文の取得（base64）
       let body = ""
       if (msgData.payload.parts) {
-        const part = msgData.payload.parts.find((p: any) => p.mimeType === "text/plain")
+        const parts = msgData.payload.parts as GmailPart[]
+        const part = parts.find((p) => p.mimeType === "text/plain")
         if (part?.body?.data) {
           body = Buffer.from(part.body.data, "base64").toString("utf-8")
         }
