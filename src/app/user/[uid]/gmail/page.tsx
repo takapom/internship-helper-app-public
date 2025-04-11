@@ -1,60 +1,10 @@
-// "use client"
-
-// import { useEffect, useState } from "react"
-// import styles from "./gmail.module.css"
-// import Navbar from "@/components/Navbar"
-
-// type Mail = {
-//   id: string
-//   subject: string
-//   body: string
-// }
-
-// export default function Gmail() {
-//   const [emails, setEmails] = useState<Mail[]>([])
-
-//   useEffect(() => {
-//     const token = localStorage.getItem("gmailAccessToken")
-//     if (!token) return
-
-//     const fetchEmails = async () => {
-//       const res = await fetch("/api/gmail", {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ accessToken: token }),
-//       })
-//       const data = await res.json()
-//       console.log("Gmail API Response:", data) // ←ここを確認
-//       setEmails(data)
-//     }
-
-//     fetchEmails()
-//   }, [])
-
-//   return (
-//     <div>
-//         <Navbar />
-//       <h1 className={styles.first_text}>📩 Gmail取得ページです！</h1>
-//       <ul>
-//         {emails.map((mail) => (
-//           <li key={mail.id}>
-//             <h3>件名: {mail.subject}</h3>
-//             <p>{mail.body.slice(0, 200)}...</p> {/* 本文を少しだけ表示 */}
-//             <hr />
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   )
-// }
-
 
 "use client"
 
 import { useEffect, useState } from "react"
 import styles from "./gmail.module.css"
 import Navbar from "@/components/Navbar"
-import { Mail, Search } from "lucide-react"
+import { Mail } from "lucide-react"
 
 type Email = {
   id: string
