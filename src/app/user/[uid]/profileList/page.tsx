@@ -7,7 +7,12 @@ export default function ProfileListPage() {
         <div>
             <Navbar />
             <Analysis />
-            <Footer />
+            <Footer 
+              githubUrl = "https://github.com/takapom",
+              twitterUrl = "https://x.com/takapom_engin",
+              instagramUrl = "https://www.instagram.com/takapondes/",
+              blogUrl = "https://blog-site-ehel.vercel.app/",
+            />
         </div>
     )
 }

@@ -72,7 +72,12 @@ export default function Home() {
         <p>&copy; {new Date().getFullYear()} Developers Guide - All Rights Reserved</p>
       </footer>
     </div>
-    <Footer />
+    <Footer 
+      githubUrl = "https://github.com/takapom",
+      twitterUrl = "https://x.com/takapom_engin",
+      instagramUrl = "https://www.instagram.com/takapondes/",
+      blogUrl = "https://blog-site-ehel.vercel.app/",
+    />
     </div>
   )
 }

@@ -10,13 +10,17 @@ interface FooterProps {
 }
 
 export default function Footer({
+  githubUrl = "https://github.com/takapom",
+  twitterUrl = "https://x.com/takapom_engin",
+  instagramUrl = "https://www.instagram.com/takapondes/",
+  blogUrl = "https://blog-site-ehel.vercel.app/",
 }: FooterProps) {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.socialLinks}>
           <Link
-            href={"https://github.com/takapom"}
+            href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialLink}
@@ -25,7 +29,7 @@ export default function Footer({
             <Github size={24} />
           </Link>
           <Link
-            href={"https://x.com/takapom_engin"}
+            href={twitterUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialLink}
@@ -34,7 +38,7 @@ export default function Footer({
             <Twitter size={24} />
           </Link>
           <Link
-            href={"https://www.instagram.com/takapondes/"}
+            href={instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialLink}
@@ -43,7 +47,7 @@ export default function Footer({
             <Instagram size={24} />
           </Link>
           <Link
-            href={"https://blog-site-ehel.vercel.app/"}
+            href={blogUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.socialLink}
