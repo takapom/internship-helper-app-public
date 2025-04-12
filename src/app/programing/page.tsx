@@ -6,6 +6,7 @@ import { WebLanguages } from "@/components/web-languages"
 import { MobileLanguages } from "@/components/mobile-languages"
 import { DevelopmentTools } from "@/components/development-tools"
 import Navbar from "@/components/Navbar"
+import Footer from "@/components/Footer"
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState("web")
@@ -71,6 +72,7 @@ export default function Home() {
         <p>&copy; {new Date().getFullYear()} Developers Guide - All Rights Reserved</p>
       </footer>
     </div>
+    <Footer />
     </div>
   )
 }

@@ -55,6 +55,7 @@
     background-color: #d9363e; /* ホバー時に少し濃く */
   }
   
+  /* スマホサイズに適用 */
   @media (max-width: 600px){
     .card {
       background: white;

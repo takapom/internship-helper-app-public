@@ -8,6 +8,7 @@ import Navbar from "@/components/Navbar";
 import GlassCard from "@/components/GlassCard"
 import styles from "./page.module.css"
 import SpaceHeader from "@/components/SpaceHeader";
+import Footer from "@/components/Footer";
 
 type Todo = {
   id: string;
@@ -142,6 +143,7 @@ export default function TodosPage() {
         />
         ))}
         </div>
+        <Footer />
     </div>
   );
 }

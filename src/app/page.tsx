@@ -7,6 +7,7 @@ import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore"
 import { useState } from "react"
 import styles from "./page.module.css"
 import { setPersistence, browserLocalPersistence } from "firebase/auth";
+import Footer from "@/components/Footer"
 
 
 export default function HomePage() {
@@ -95,14 +96,14 @@ export default function HomePage() {
               <div className={styles.stepIcon}>2</div>
               <div className={styles.stepText}>
                 <h3>タスク管理</h3>
-                <p>企業リストやインターン管理、その他の機能が可能になります</p>
+                <p>ログインしたユーザー専用のタスクやGmail取得が可能です</p>
               </div>
             </div>
             <div className={styles.step}>
               <div className={styles.stepIcon}>3</div>
               <div className={styles.stepText}>
                 <h3>ログアウト</h3>
-                <p>ログアウトしたい場合は左上のアイコンをタップ</p>
+                <p>ログアウトしたい場合は左上のshuMailアイコンをタップ</p>
               </div>
             </div>
           </div>

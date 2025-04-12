@@ -72,3 +72,29 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* 影を濃くして立体感 */
     opacity: 0.9; /* 少し薄く */
 }
+
+
+ /* 画面幅が768px以下（＝スマホサイズ）になったときのCSS */
+@media screen and (max-width: 768px) {
+    .input {
+        font-size: 16px; /* 20px → 16px に縮小 */
+        font-weight: bold;
+        padding: 6px 9px; /* 少し縮小 */
+        width: 100%;
+        padding-left: 30px; /* 左余白も調整 */
+        outline: none;
+        background: #FFFFFF;
+        color: #000000;
+        border: 4px solid #C4D1EB; /* 枠線も少し細く */
+        border-radius: 14px; /* 少し小さく */
+        box-shadow: 3px 3px 5px 3px #E2E2E2; /* 陰も控えめに */
+        transition: .3s ease;
+    }
+
+    .list_text{
+        text-align: center;
+        font-size: 1.8rem;
+    }
+    
+
+  }

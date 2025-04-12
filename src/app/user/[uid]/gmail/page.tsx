@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import styles from "./gmail.module.css"
 import Navbar from "@/components/Navbar"
 import { Mail } from "lucide-react"
+import Footer from "@/components/Footer"
 
 type Email = {
   id: string
@@ -86,6 +87,7 @@ export default function Gmail() {
           <p>メールが見つかりませんでした</p>
         </div>
       )}
+      <Footer />
     </div>
   )
 }
