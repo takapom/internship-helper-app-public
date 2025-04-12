@@ -7,7 +7,6 @@ import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore"
 import { useState } from "react"
 import styles from "./page.module.css"
 import { setPersistence, browserLocalPersistence } from "firebase/auth";
-import Footer from "@/components/Footer"
 
 
 export default function HomePage() {
