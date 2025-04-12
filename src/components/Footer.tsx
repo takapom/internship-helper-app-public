@@ -2,12 +2,13 @@ import Link from "next/link"
 import { Github, Twitter, Instagram, BookOpen } from "lucide-react"
 import styles from "./footer.module.css"
 
-interface FooterProps {
-  githubUrl: string
-  twitterUrl: string
-  instagramUrl: string
-  blogUrl: string
-}
+type FooterProps = {
+  githubUrl?: string;
+  twitterUrl?: string;
+  instagramUrl?: string;
+  blogUrl?: string;
+};
+
 
 export default function Footer({
   githubUrl = "https://github.com/takapom",
