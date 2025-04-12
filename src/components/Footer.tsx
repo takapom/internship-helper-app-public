@@ -10,10 +10,6 @@ interface FooterProps {
 }
 
 export default function Footer({
-  githubUrl = "https://github.com/yourusername",
-  twitterUrl = "https://twitter.com/yourusername",
-  instagramUrl = "https://instagram.com/yourusername",
-  blogUrl = "https://yourblog.com",
 }: FooterProps) {
   return (
     <footer className={styles.footer}>
