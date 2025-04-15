@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import useCurrentUser from "@/hooks/useCurrentUser"
 import styles from "./analysis.module.css"
 
 interface AnalysisEntry {
@@ -13,13 +14,14 @@ interface AnalysisEntry {
 
 export default function SelfAnalysis() {
   const [entries, setEntries] = useState<AnalysisEntry[]>([])
-
   const [newEntry, setNewEntry] = useState<Omit<AnalysisEntry, "id">>({
     period: "",
     stage: "",
     summary: "",
     content: "",
   })
+
+  const user = useCurrentUser()
 
   const handleAddEntry = () => {
     if (newEntry.period && newEntry.summary && newEntry.content) {
@@ -29,9 +31,21 @@ export default function SelfAnalysis() {
     }
   }
 
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>自己分析</h1>
+
+      {user && (
+        <div className={styles.userInfo}>
+          <img
+            src={user.photoURL || "/default-icon.png"}
+            alt="User Icon"
+            className={styles.userIcon}
+          />
+          <p className={styles.userName}>{user.displayName}</p>
+        </div>
+      )}
 
       <div className={styles.tableContainer}>
         <div className={styles.table}>

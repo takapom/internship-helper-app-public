@@ -1,3 +1,4 @@
+//コード解釈完了
 "use client"
 
 import { useRouter } from "next/navigation"
@@ -15,7 +16,7 @@ export default function HomePage() {
 
   const handleLogin = async () => {
     setLoading(true)
-    await setPersistence(auth, browserLocalPersistence); // 👈 追加する
+    await setPersistence(auth, browserLocalPersistence); 
     try {
       const provider = new GoogleAuthProvider()
       provider.addScope("https://www.googleapis.com/auth/gmail.readonly")
