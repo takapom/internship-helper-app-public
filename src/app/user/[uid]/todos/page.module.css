@@ -126,17 +126,14 @@
     line-height: 1;
   }
 
-  .internList {
-    display: flex;
-    flex-wrap: wrap;              /* 横幅足りなければ折り返す */
-    justify-content: center;      /* 中央揃え（左寄せなら flex-start） */
+  .internList {      /* 中央揃え（左寄せなら flex-start） */
     gap: 20px;                    /* カード間の余白 */
     margin-top: 30px;
   }
   
   .internCard {
     transition: transform 0.2s ease;
-      width: 30%;
+      width: 100%;
       min-width: 250px;
   }
   
