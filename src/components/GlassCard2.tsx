@@ -4,7 +4,7 @@ import styles from './GlassCard2.module.css'
 import { db } from "../../src/lib/firebase"
 import { doc, deleteDoc } from 'firebase/firestore'
 import { useRouter } from 'next/navigation'
-import { Building, Briefcase, MapPin, Star, StickyNote, Trash2, Edit } from 'lucide-react'
+import { Briefcase, MapPin, Star, StickyNote, Trash2, Edit } from 'lucide-react'
 
 type Props = {
   uid: string
