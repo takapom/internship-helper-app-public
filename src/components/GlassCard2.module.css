@@ -1,97 +1,262 @@
-/* components/GlassCard.module.css */
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap");
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  color: rgb(24, 31, 171);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-bottom: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 80%);
+  transform: rotate(30deg);
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25), 0 8px 16px rgba(0, 0, 0, 0.15), inset 0 0 0 1px
+    rgba(255, 255, 255, 0.12);
+}
+
+.cardContent {
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.companyName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, #4a26d9, #8364ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.02em;
+}
+
+.industryBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(74, 38, 217, 0.15);
+  color: #4a26d9;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.badgeIcon {
+  flex-shrink: 0;
+}
+
+.infoGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.infoLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(24, 31, 171, 0.7);
+  margin-bottom: 2px;
+}
+
+.infoIcon {
+  color: rgba(74, 38, 217, 0.8);
+}
+
+.infoValue {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(24, 31, 171);
+  padding-left: 26px;
+  line-height: 1.5;
+}
+
+.starRating {
+  display: flex;
+  gap: 4px;
+  padding-left: 26px;
+}
+
+.starIcon {
+  color: rgba(74, 38, 217, 0.3);
+  transition: all 0.2s ease;
+}
+
+.starActive {
+  color: #4a26d9;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.cardButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex: 1;
+}
+
+.deleteButton {
+  background: linear-gradient(135deg, #471fca, #6b42e8);
+  color: white;
+  box-shadow: 0 4px 12px rgba(71, 31, 202, 0.3);
+}
+
+.deleteButton:hover {
+  background: linear-gradient(135deg, #5929e0, #7b52f8);
+  box-shadow: 0 6px 16px rgba(71, 31, 202, 0.4);
+}
+
+.editButton {
+  background: linear-gradient(135deg, #3b17a8, #5a36c4);
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 23, 168, 0.3);
+}
+
+.editButton:hover {
+  background: linear-gradient(135deg, #4b21c8, #6a46d4);
+  box-shadow: 0 6px 16px rgba(59, 23, 168, 0.4);
+}
+
+/* スマホサイズに適用 */
+@media (max-width: 768px) {
+  .cardContent {
+    padding: 20px;
   }
-  
-  .card {
-      background: white;
-      border-radius: 16px;
-      padding: 24px;
-      color: rgb(24, 31, 171);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: transform 0.3s ease;
-      width: 30%;
-      margin-bottom: 30px;
-    }
-    
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    
-  .title_text{
-    color: blue;
+
+  .companyName {
+    font-size: 1.3rem;
   }
-  
-  .edit_button{
-    background-color: #471fcac9; /* 赤っぽい削除ボタン */
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px; /* 少し大きめに */
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-left: 10px;
+
+  .industryBadge {
+    padding: 4px 10px;
+    font-size: 0.75rem;
   }
-  
-  .card_button {
-    background-color: #471fcac9; /* 赤っぽい削除ボタン */
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px; /* 少し大きめに */
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+
+  .infoGrid {
+    gap: 14px;
   }
-  
-  .card_button:hover {
-    background-color: #d9363e; /* ホバー時に少し濃く */
+
+  .infoLabel {
+    font-size: 0.75rem;
   }
-  
-  @media (max-width: 600px){
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 24px;
-      color: rgb(24, 31, 171);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      transition: transform 0.3s ease;
-      width: 70%;
-      margin-bottom: 30px;
-      }
-  
-      .edit_button{
-        background-color: #471fcac9; /* 赤っぽい削除ボタン */
-        color: white;
-        padding: 6px 15px;
-        font-size: 16px; /* 少し大きめに */
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        margin-left: 10px;
-      }
-  
-      .card_button {
-        background-color: #471fcac9; /* 赤っぽい削除ボタン */
-        color: white;
-        padding: 6px 15px;
-        font-size: 16px; /* 少し大きめに */
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-  
-    }
-  
-    
+
+  .infoValue {
+    font-size: 0.95rem;
+    padding-left: 24px;
+  }
+
+  .starRating {
+    padding-left: 24px;
+  }
+
+  .buttonContainer {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .cardButton {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+/* 小さいスマホサイズに適用 */
+@media (max-width: 480px) {
+  .cardContent {
+    padding: 16px;
+  }
+
+  .companyName {
+    font-size: 1.2rem;
+  }
+
+  .cardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .industryBadge {
+    align-self: flex-start;
+  }
+
+  .infoGrid {
+    gap: 12px;
+  }
+
+  .infoLabel {
+    font-size: 0.7rem;
+  }
+
+  .infoValue {
+    font-size: 0.9rem;
+    padding-left: 22px;
+  }
+
+  .starRating {
+    padding-left: 22px;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
