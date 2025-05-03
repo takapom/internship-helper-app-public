@@ -86,65 +86,80 @@ export default function TodosPage() {
           <div className={styles.formContent}>
             <div className={styles.formGrid}>
               <div className={styles.inputGroup}>
+                <label className={styles.inputLabel}>
+                  <Building size={16} className={styles.labelIcon} />
+                  企業名
+                </label>
                 <div className={styles.inputWrapper}>
-                  <Building className={styles.inputIcon} size={18} />
                   <input
                     type="text"
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
-                    placeholder="企業名"
+                    placeholder="例: 株式会社テクノフューチャー"
                     className={styles.input}
                   />
                 </div>
               </div>
 
               <div className={styles.inputGroup}>
+                <label className={styles.inputLabel}>
+                  <Briefcase size={16} className={styles.labelIcon} />
+                  業界
+                </label>
                 <div className={styles.inputWrapper}>
-                  <Briefcase className={styles.inputIcon} size={18} />
                   <input
                     type="text"
                     value={industry}
                     onChange={(e) => setIndustry(e.target.value)}
-                    placeholder="業界"
+                    placeholder="例: IT・通信"
                     className={styles.input}
                   />
                 </div>
               </div>
 
               <div className={styles.inputGroup}>
+                <label className={styles.inputLabel}>
+                  <Star size={16} className={styles.labelIcon} />
+                  志望度
+                </label>
                 <div className={styles.inputWrapper}>
-                  <Star className={styles.inputIcon} size={18} />
                   <input
                     type="text"
                     value={desire}
                     onChange={(e) => setDesire(e.target.value)}
-                    placeholder="志望度"
+                    placeholder="例: 5（1〜5）"
                     className={styles.input}
                   />
                 </div>
               </div>
 
               <div className={styles.inputGroup}>
+                <label className={styles.inputLabel}>
+                  <MapPin size={16} className={styles.labelIcon} />
+                  勤務地
+                </label>
                 <div className={styles.inputWrapper}>
-                  <MapPin className={styles.inputIcon} size={18} />
                   <input
                     type="text"
                     value={location}
                     onChange={(e) => setLocation(e.target.value)}
-                    placeholder="勤務地"
+                    placeholder="例: 東京都渋谷区"
                     className={styles.input}
                   />
                 </div>
               </div>
 
               <div className={styles.inputGroup}>
+                <label className={styles.inputLabel}>
+                  <StickyNote size={16} className={styles.labelIcon} />
+                  メモ
+                </label>
                 <div className={styles.inputWrapper}>
-                  <StickyNote className={styles.inputIcon} size={18} />
                   <input
                     type="text"
                     value={memo}
                     onChange={(e) => setMemo(e.target.value)}
-                    placeholder="メモ"
+                    placeholder="例: 福利厚生が充実"
                     className={styles.input}
                   />
                 </div>

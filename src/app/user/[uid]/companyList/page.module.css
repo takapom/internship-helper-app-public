@@ -89,35 +89,44 @@
 .inputGroup {
   display: flex;
   flex-direction: column;
+  gap: 6px;
+}
+
+.inputLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(74, 38, 217, 0.9);
+  margin-left: 4px;
+}
+
+.labelIcon {
+  color: rgba(74, 38, 217, 0.8);
 }
 
 .inputWrapper {
   position: relative;
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   transition: all 0.3s ease;
   overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .inputWrapper:focus-within {
-  box-shadow: 0 0 0 2px rgba(74, 38, 217, 0.3);
+  box-shadow: 0 0 0 2px rgba(74, 38, 217, 0.3), 0 4px 8px rgba(0, 0, 0, 0.1);
   border-color: rgba(74, 38, 217, 0.5);
-  background: rgba(255, 255, 255, 0.25);
-}
-
-.inputIcon {
-  position: absolute;
-  left: 12px;
-  color: rgba(74, 38, 217, 0.8);
-  z-index: 2;
+  background: rgba(255, 255, 255, 0.35);
 }
 
 .input {
   width: 100%;
-  padding: 0.75rem 0.75rem 0.75rem 40px;
+  padding: 0.75rem 1rem;
   border: none;
   background: transparent;
   font-size: 0.9rem;
@@ -131,8 +140,9 @@
 }
 
 .input::placeholder {
-  color: rgba(74, 38, 217, 0.6);
-  font-weight: 500;
+  color: rgba(74, 38, 217, 0.4);
+  font-weight: 400;
+  font-size: 0.85rem;
 }
 
 .addButton {
@@ -228,17 +238,21 @@
     gap: 0.75rem;
   }
 
+  .inputLabel {
+    font-size: 0.8rem;
+  }
+
   .inputWrapper {
     border-radius: 10px;
   }
 
   .input {
-    padding: 0.65rem 0.65rem 0.65rem 36px;
+    padding: 0.65rem 0.75rem;
     font-size: 0.85rem;
   }
 
-  .inputIcon {
-    left: 10px;
+  .input::placeholder {
+    font-size: 0.8rem;
   }
 }
 
@@ -260,22 +274,21 @@
   }
 
   .formGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 
-  .inputWrapper {
-    height: 42px;
+  .inputLabel {
+    font-size: 0.75rem;
   }
 
   .input {
-    padding: 0.5rem 0.5rem 0.5rem 32px;
+    padding: 0.6rem 0.75rem;
     font-size: 0.8rem;
   }
 
-  .inputIcon {
-    left: 8px;
-    transform: scale(0.9);
+  .input::placeholder {
+    font-size: 0.75rem;
   }
 
   .addButton {
