@@ -11,7 +11,12 @@ type Email = {
   id: string
   subject: string
   body: string
+  classification?: {
+    is_relevant: boolean
+    reason: string
+  }
 }
+
 
 export default function Gmail() {
   const [emails, setEmails] = useState<Email[]>([])
@@ -23,7 +28,7 @@ export default function Gmail() {
       setLoading(false)
       return
     }
-
+  
     const fetchEmails = async () => {
       try {
         setLoading(true)
@@ -34,24 +39,47 @@ export default function Gmail() {
         })
         const data = await res.json()
         console.log("Gmail API Response:", data)
-        setEmails(data)
+  
+        // ✅ Difyでメールを分類
+        const classifiedEmails = await Promise.all(
+          data.map(async (email: { subject: string; body: string }) => {
+            const res = await fetch("/api/classify", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                subject: email.subject,
+                body: email.body,
+              }),
+            })
+  
+            const result = await res.json()
+            return {
+              ...email,
+              classification: result,
+            }
+          })
+        )
+  
+        setEmails(classifiedEmails)
       } catch (error) {
-        console.error("Error fetching emails:", error)
+        console.error("Error fetching or classifying emails:", error)
       } finally {
         setLoading(false)
       }
     }
-
+  
     fetchEmails()
   }, [])
+  
 
   return (
     <div className={styles.container}>
+      
       <Navbar />
       <div className={styles.header}>
         <h1 className={styles.title}>
           <Mail className={styles.mailIcon} />
-          Gmail取得ページです！
+          Gmail取得ページ
         </h1>
       </div>
 
@@ -75,6 +103,14 @@ export default function Gmail() {
                   <td className={styles.subject}>{email.subject}</td>
                   <td className={styles.preview}>
                     {email.body.length > 150 ? `${email.body.slice(0, 150)}...` : email.body}
+                    {email.classification?.is_relevant ? (
+                    <p className={styles.label}>🟢 就活/インターン関連</p>
+                  ) : (
+                    <p className={styles.label}>⚪️ 関係なし</p>
+                  )}
+                  <p className={styles.reason}>
+                    {email.classification?.reason}
+                  </p>
                   </td>
                 </tr>
               ))}

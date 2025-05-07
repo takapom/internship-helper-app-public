@@ -84,9 +84,10 @@ export default function TodosPage() {
   }, [uid])
 
   return (
-    <div className={styles.container}>
+    <div>
       <Navbar />
-      <SpaceHeader />
+      {/* <SpaceHeader /> */}
+    <div className={styles.container}>
       <main className={styles.main}>
         <div className={styles.headerSection}>
           <h1 className={styles.title}>インターン一覧</h1>
@@ -215,6 +216,7 @@ export default function TodosPage() {
         instagramUrl="https://www.instagram.com/takapondes/"
         blogUrl="https://blog-site-ehel.vercel.app/"
       />
+    </div>
     </div>
   )
 }

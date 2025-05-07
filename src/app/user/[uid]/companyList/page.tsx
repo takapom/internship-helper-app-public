@@ -73,7 +73,7 @@ export default function TodosPage() {
   return (
     <div className={styles.container}>
       <Navbar />
-      <SpaceHeader />
+      {/* <SpaceHeader /> */}
       <main className={styles.main}>
         <div className={styles.headerSection}>
           <h1 className={styles.title}>企業リスト</h1>
