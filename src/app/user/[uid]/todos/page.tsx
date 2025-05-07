@@ -7,7 +7,6 @@ import { collection, getDocs, addDoc } from "firebase/firestore"
 import Navbar from "@/components/Navbar"
 import GlassCard from "@/components/GlassCard"
 import styles from "./page.module.css"
-import SpaceHeader from "@/components/SpaceHeader"
 import Footer from "@/components/Footer"
 import { Plus, Briefcase, Calendar, FileText, CheckCircle, StickyNote, Building } from "lucide-react"
 
@@ -86,7 +85,6 @@ export default function TodosPage() {
   return (
     <div>
       <Navbar />
-      {/* <SpaceHeader /> */}
     <div className={styles.container}>
       <main className={styles.main}>
         <div className={styles.headerSection}>
